@@ -11,6 +11,9 @@ import java.sql.SQLException;
  */
 public class Singleton {
 
+	// The singleton instantiated from the JVM start
+	private static Singleton single = new Singleton();
+	
 	//URL de connexion
 	private String url = "jdbc:postgresql://localhost:5432/Ecole";
 	//Nom du user
@@ -31,7 +34,7 @@ public class Singleton {
 
 	//Méthode qui va nous retourner notre instance et la créer si elle n'existe pas
 	public static Connection getInstance(){
-		if(connect == null){
+		if(single == null || connect == null){
 			new Singleton();
 		}
 		return connect;   
