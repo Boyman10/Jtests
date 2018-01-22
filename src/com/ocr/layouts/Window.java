@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  * Working on different layouts
@@ -26,6 +27,7 @@ public class Window extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 3121102083951871112L;
 	JLabel simple;
+	JPanel midPan;
 	
 	public Window(){
 		
@@ -45,8 +47,10 @@ public class Window extends JFrame implements ActionListener {
 		 */
 		JPanel panBorder = new JPanel();
 		panBorder.setLayout(new FlowLayout());
-		
+		panBorder.setBackground(Color.white);
 		simple = new JLabel("Here is my phrase");
+		simple.setOpaque(true);
+
 		JLabel second = new JLabel("Following these words...");
 		panBorder.add(simple);
 		panBorder.add(second);
@@ -56,7 +60,7 @@ public class Window extends JFrame implements ActionListener {
 		 */
 		JPanel panGrid = new JPanel();
 		panGrid.setLayout(new GridLayout(3, 2));
-
+		panGrid.setBackground(Color.cyan);
 		panGrid.add(new JButton("1"));
 		panGrid.add(new JButton("2"));
 		panGrid.add(new JButton("3"));
@@ -71,9 +75,32 @@ public class Window extends JFrame implements ActionListener {
 		 */
 		JPanel panBox = new JPanel();
 		//Lay out the label and scroll pane from top to bottom.
-		panBox.setLayout(new BoxLayout(panBox, BoxLayout.PAGE_AXIS));
+		panBox.setLayout(new BoxLayout(panBox, BoxLayout.Y_AXIS));
+		panBox.setBackground(Color.gray);
 		
+		// Padding :
 		panBox.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+		
+		JLabel newSimple = new JLabel("My Brand new Text");
+		JLabel newSecond = new JLabel("should be in the middle center");
+		
+		newSimple.setHorizontalAlignment(SwingConstants.CENTER);
+		panBox.add(newSimple);
+		panBox.add(newSecond);
+		
+		// Middle panel to include 3 test panels with different layouts :
+		midPan = new JPanel();
+		midPan.setLayout(new BoxLayout(midPan, BoxLayout.PAGE_AXIS));
+		
+		midPan.add(panBorder);
+		midPan.add(panGrid);
+		midPan.add(panBox);		
+		
+		panBox.setAlignmentX(CENTER_ALIGNMENT);
+		newSimple.setAlignmentX(CENTER_ALIGNMENT);
+		newSecond.setAlignmentX(CENTER_ALIGNMENT);
+		container.add(midPan, BorderLayout.CENTER);
+		
 		
 		/**
 		 * Border Layout for container -- default
@@ -97,9 +124,7 @@ public class Window extends JFrame implements ActionListener {
 		button.addActionListener(this);
 		
 		
-		container.add(panBorder, BorderLayout.CENTER);
-		//container.add(panGrid, BorderLayout.CENTER);
-		//container.add(panBox, BorderLayout.CENTER);
+
 		
 	}
 
