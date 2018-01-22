@@ -13,14 +13,14 @@ import javax.swing.JPanel;
   
 public class Calculatrice extends JFrame {
   private JPanel container = new JPanel();
-  //Tableau stockant les éléments à afficher dans la calculatrice
+  //Tableau stockant les ï¿½lï¿½ments ï¿½ afficher dans la calculatrice
   String[] tab_string = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", "=", "C", "+", "-", "*", "/"};
-  //Un bouton par élément à afficher
+  //Un bouton par ï¿½lï¿½ment ï¿½ afficher
   JButton[] tab_button = new JButton[tab_string.length];
   private JLabel ecran = new JLabel();
   private Dimension dim = new Dimension(50, 40);
   private Dimension dim2 = new Dimension(50, 31);
-  private double chiffre1;
+  private double chiffre1; 
   private boolean clicOperateur = false, update = false;
   private String operateur = "";
   
@@ -38,11 +38,11 @@ public class Calculatrice extends JFrame {
   }
       
   private void initComposant(){
-    //On définit la police d'écriture à utiliser
+    //On dï¿½finit la police d'ï¿½criture ï¿½ utiliser
     Font police = new Font("Arial", Font.BOLD, 20);
     ecran = new JLabel("0");
     ecran.setFont(police);
-    //On aligne les informations à droite dans le JLabel
+    //On aligne les informations ï¿½ droite dans le JLabel
     ecran.setHorizontalAlignment(JLabel.RIGHT);
     ecran.setPreferredSize(new Dimension(220, 20));
     JPanel operateur = new JPanel();      
@@ -52,15 +52,15 @@ public class Calculatrice extends JFrame {
     JPanel panEcran = new JPanel();
     panEcran.setPreferredSize(new Dimension(220, 30));
 
-    //On parcourt le tableau initialisé
-    //afin de créer nos boutons
+    //On parcourt le tableau initialisï¿½
+    //afin de crï¿½er nos boutons
     for(int i = 0; i < tab_string.length; i++){
       tab_button[i] = new JButton(tab_string[i]);
       tab_button[i].setPreferredSize(dim);
       switch(i){
-        //Pour chaque élément situé à la fin du tableau
+        //Pour chaque ï¿½lï¿½ment situï¿½ ï¿½ la fin du tableau
         //et qui n'est pas un chiffre
-        //on définit le comportement à avoir grâce à un listener
+        //on dï¿½finit le comportement ï¿½ avoir grï¿½ce ï¿½ un listener
         case 11 :
           tab_button[i].addActionListener(new EgalListener());
           chiffre.add(tab_button[i]);
@@ -91,7 +91,7 @@ public class Calculatrice extends JFrame {
           operateur.add(tab_button[i]);
           break;
         default :
-          //Par défaut, ce sont les premiers éléments du tableau
+          //Par dï¿½faut, ce sont les premiers ï¿½lï¿½ments du tableau
           //donc des chiffres, on affecte alors le bon listener
           chiffre.add(tab_button[i]);
           tab_button[i].addActionListener(new ChiffreListener());
@@ -105,7 +105,7 @@ public class Calculatrice extends JFrame {
     container.add(operateur, BorderLayout.EAST);
   }
 
-  //Méthode permettant d'effectuer un calcul selon l'opérateur sélectionné
+  //Mï¿½thode permettant d'effectuer un calcul selon l'opï¿½rateur sï¿½lectionnï¿½
   private void calcul(){
     if(operateur.equals("+")){
       chiffre1 = chiffre1 + 
@@ -133,7 +133,7 @@ public class Calculatrice extends JFrame {
     }
   }
 
-  //Listener utilisé pour les chiffres
+  //Listener utilisï¿½ pour les chiffres
   //Permet de stocker les chiffres et de les afficher
   class ChiffreListener implements ActionListener {
     public void actionPerformed(ActionEvent e){
@@ -150,7 +150,7 @@ public class Calculatrice extends JFrame {
     }
   }
 
-  //Listener affecté au bouton =
+  //Listener affectï¿½ au bouton =
   class EgalListener implements ActionListener {
     public void actionPerformed(ActionEvent arg0){
       calcul();
@@ -159,7 +159,7 @@ public class Calculatrice extends JFrame {
     }
   }
 
-  //Listener affecté au bouton +
+  //Listener affectï¿½ au bouton +
   class PlusListener implements ActionListener {
     public void actionPerformed(ActionEvent arg0){
       if(clicOperateur){
@@ -175,7 +175,7 @@ public class Calculatrice extends JFrame {
     }
   }
 
-  //Listener affecté au bouton -
+  //Listener affectï¿½ au bouton -
   class MoinsListener implements ActionListener {
     public void actionPerformed(ActionEvent arg0){
       if(clicOperateur){
@@ -191,7 +191,7 @@ public class Calculatrice extends JFrame {
     }
   }
 
-  //Listener affecté au bouton *
+  //Listener affectï¿½ au bouton *
   class MultiListener implements ActionListener {
     public void actionPerformed(ActionEvent arg0){
       if(clicOperateur){
@@ -207,7 +207,7 @@ public class Calculatrice extends JFrame {
     }
   }
 
-  //Listener affecté au bouton /
+  //Listener affectï¿½ au bouton /
   class DivListener implements ActionListener {
     public void actionPerformed(ActionEvent arg0){
       if(clicOperateur){
@@ -223,7 +223,7 @@ public class Calculatrice extends JFrame {
     }
   }
 
-  //Listener affecté au bouton de remise à zéro
+  //Listener affectï¿½ au bouton de remise ï¿½ zï¿½ro
   class ResetListener implements ActionListener {
     public void actionPerformed(ActionEvent arg0){
       clicOperateur = false;
