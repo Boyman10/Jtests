@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import javax.swing.SwingConstants;
 
 /**
@@ -49,7 +50,7 @@ public class Window extends JFrame implements ActionListener {
 		panBorder.setLayout(new FlowLayout());
 		panBorder.setBackground(Color.white);
 		simple = new JLabel("Here is my phrase");
-		simple.setOpaque(true);
+		simple.setOpaque(true); // So we can use bg colors
 
 		JLabel second = new JLabel("Following these words...");
 		panBorder.add(simple);
@@ -84,7 +85,7 @@ public class Window extends JFrame implements ActionListener {
 		JLabel newSimple = new JLabel("My Brand new Text");
 		JLabel newSecond = new JLabel("should be in the middle center");
 		
-		newSimple.setHorizontalAlignment(SwingConstants.CENTER);
+		//newSimple.setHorizontalAlignment(SwingConstants.CENTER);
 		panBox.add(newSimple);
 		panBox.add(newSecond);
 		
@@ -96,7 +97,6 @@ public class Window extends JFrame implements ActionListener {
 		midPan.add(panGrid);
 		midPan.add(panBox);		
 		
-		panBox.setAlignmentX(CENTER_ALIGNMENT);
 		newSimple.setAlignmentX(CENTER_ALIGNMENT);
 		newSecond.setAlignmentX(CENTER_ALIGNMENT);
 		container.add(midPan, BorderLayout.CENTER);
@@ -123,9 +123,14 @@ public class Window extends JFrame implements ActionListener {
 		
 		button.addActionListener(this);
 		
-		
+		//Create a split pane with the two scroll panes in it.
+	    JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
+	    		panBorder, panGrid);
+	    splitPane.setOneTouchExpandable(true);
+	    splitPane.setDividerLocation(150);
 
-		
+	    midPan.add(splitPane);
+	    
 	}
 
 	@Override
